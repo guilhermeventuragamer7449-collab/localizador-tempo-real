@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: localizador-tempo-real
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: localizador-db
+          property: connectionString
+databases:
+  - name: localizador-db
+    plan: free
